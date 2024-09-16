@@ -1,50 +1,32 @@
-# React + TypeScript + Vite
+# Battery Status Visualization Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project visualizes battery charging and consumption data over a specified time range using React, Typescript and Chart.js. The project fetches mock battery data and provides a visual representation through a dynamic bar chart.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Screenshots](#screenshots)
+- [API Endpoints](#api-endpoints)
+- [Technologies Used](#technologies-used)
+- [Folder Structure](#folder-structure)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Features
 
-- Configure the top-level `parserOptions` property like this:
+- Visualize battery charging and consumption using dynamic bar charts.
+- Search functionality to view charging information based on interval event ID.
+- Real-time data fetching with mock API integration, you can change the data of src/store/backend-response.json.
+- Interactive tooltip when hover on each bar to see the decreasing/incresing value.
+- you can also see charging, consumption or no change bars on when click on label tags.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Follow these steps to set up the project locally:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+1. Clone the repository:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+   ```bash
+   git clone https://github.com/mariemashrafkamel/battery-status

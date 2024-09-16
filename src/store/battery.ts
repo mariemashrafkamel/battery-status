@@ -1,4 +1,4 @@
-import data from '../../backend-response.json';
+import data from './backend-response.json';
 
 export const fetchBatteryData = () => {
    return new Promise((resolve) => {
@@ -10,12 +10,7 @@ export const fetchBatteryData = () => {
 
  export const getIntervalEventDetails = async (id : number) => {
    return new Promise((resolve, reject) => {
-    //   const event = data.chargingStates.find((event) => event.internalEventId === id);
-    //  if (event) {
-    //   resolve(event as BatteryData); 
-    //  } else {
-    //    reject(new Error("Event not found"));
-    //  }
+  
     const eventData : EventData = {
       label: '', 
       chargingData: 0,
