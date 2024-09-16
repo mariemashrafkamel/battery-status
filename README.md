@@ -37,18 +37,24 @@ Follow these steps to set up the project locally:
    npm install
    npm run dev
 
+---
 ## Screenshots
 
-   ```markdown
    ![24 Hours battery status](./screenshots/battery1.png)
    ![Display consumption states only](./screenshots/battery2.png)
    ![Search by Event ID](./screenshots/battery3.png)
 
+---
+
 ## API Endpoints
   - The project uses a mock API that simulates battery data fetching, in src/store/backend-response.json
   
+---
+
 ## Technologies Used
    React, Typescript and Chart.js
+
+---
 
 ## Folder Structure
 
