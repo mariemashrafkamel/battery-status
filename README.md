@@ -6,7 +6,6 @@ This project visualizes battery charging and consumption data over a specified t
 
 - [Features](#features)
 - [Installation](#installation)
-- [Usage](#usage)
 - [Screenshots](#screenshots)
 - [API Endpoints](#api-endpoints)
 - [Technologies Used](#technologies-used)
@@ -30,3 +29,40 @@ Follow these steps to set up the project locally:
 
    ```bash
    git clone https://github.com/mariemashrafkamel/battery-status
+
+2. Install the project:
+
+   ```bash
+   cd battery-status
+   npm install
+   npm run dev
+
+## Screenshots
+
+   ```markdown
+   ![24 Hours battery status](./screenshots/battery1.png)
+   ![Display consumption states only](./screenshots/battery2.png)
+   ![Search by Event ID](./screenshots/battery3.png)
+
+## API Endpoints
+  - The project uses a mock API that simulates battery data fetching, in src/store/backend-response.json
+  
+## Technologies Used
+   React, Typescript and Chart.js
+
+## Folder Structure
+
+  battery-status/
+  ├── public/                 # Static files
+  ├── screenshots/            # Project screenshots
+  ├── src/                    # Application source code
+  │   ├── components/         # React components (HeaderComponent, BatteryBarChartComponent)
+  │   ├── store/              # Store for API and mock data (battery.ts, backend-response.json)
+  │   ├── App.tsx             # Main application component
+  │   └── main.tsx            # Entry point for React
+  │   └── interfaces.d.ts     # All Interfaces for project
+  │   └── App.css             # Style sheet
+  ├── .gitignore              # Ignored files for Git
+  ├── README.md               # Project documentation
+  ├── package.json            # Node dependencies and scripts
+  └── tsconfig.json           # TypeScript configuration
