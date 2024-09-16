@@ -59,10 +59,9 @@ Follow these steps to set up the project locally:
 ## Folder Structure
 
   battery-status/
-  ├── public/                 # Static files
   ├── screenshots/            # Project screenshots
   ├── src/                    # Application source code
-  │   ├── components/         # React components (HeaderComponent, BatteryBarChartComponent)
+  │   ├── components/         # Components(HeaderComponent, BatteryBarChartComponent)
   │   ├── store/              # Store for API and mock data (battery.ts, backend-response.json)
   │   ├── App.tsx             # Main application component
   │   └── main.tsx            # Entry point for React
