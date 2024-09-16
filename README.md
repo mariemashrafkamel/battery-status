@@ -58,16 +58,16 @@ Follow these steps to set up the project locally:
 
 ## Folder Structure
 
-  battery-status/
-  ├── screenshots/            # Project screenshots
-  ├── src/                    # Application source code
-  │   ├── components/         # Components(HeaderComponent, BatteryBarChartComponent)
-  │   ├── store/              # Store for API and mock data (battery.ts, backend-response.json)
-  │   ├── App.tsx             # Main application component
-  │   └── main.tsx            # Entry point for React
-  │   └── interfaces.d.ts     # All Interfaces for project
-  │   └── App.css             # Style sheet
-  ├── .gitignore              # Ignored files for Git
-  ├── README.md               # Project documentation
-  ├── package.json            # Node dependencies and scripts
-  └── tsconfig.json           # TypeScript configuration
+    battery-status/
+    ├── screenshots/            # Project screenshots
+    ├── src/                    # Application source code
+    │   ├── components/         # Components(HeaderComponent, BatteryBarChartComponent)
+    │   ├── store/              # Store for API and mock data (battery.ts, backend-response.json)
+    │   ├── App.tsx             # Main application component
+    │   └── main.tsx            # Entry point for React
+    │   └── interfaces.d.ts     # All Interfaces for project
+    │   └── App.css             # Style sheet
+    ├── .gitignore              # Ignored files for Git
+    ├── README.md               # Project documentation
+    ├── package.json            # Node dependencies and scripts
+    └── tsconfig.json           # TypeScript configuration
