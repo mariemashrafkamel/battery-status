@@ -1,10 +1,9 @@
 
  interface BatteryBarChartProps {
    labels: string[]; //dates to be displayed on x axis
-   chargingData: number[];
-   consumingData: number[];
-   noChangeData: number[];
    difference: number[];
+   dataArray: number[];
+   colorArray: string[];
  }
 
  interface BatteryData {
@@ -22,8 +21,8 @@ interface EventData {
   date? :string;
   internalEventId? : number;
   label: string; 
-  chargingData: number;
-  consumingData: number;
-  noChangeData: number;
   difference: number;
+  processedColors:string;
+  processedData:number;
+  
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
 
 import {
@@ -14,40 +14,21 @@ import {
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 
-const ChartComponent : React.FC<BatteryBarChartProps> = ({ chargingData, consumingData, noChangeData,labels, difference}) => {
-  let xLabels : string[]= []
-  if(typeof(labels) == 'string')
-  {
-     xLabels.push(labels)
-  }
-  else{
-    xLabels = labels
-  }
+const ChartComponent : React.FC<BatteryBarChartProps> = ({labels, difference, dataArray, colorArray}) => {
+  const [legendVisibility, setLegendVisibility] = useState({ Charging: true, Consuming: true, NoChange: true });
+ 
   const chartData = {
-    labels : xLabels,
+    labels,
     datasets: [
       {
-        label: 'Charging',
-        data: chargingData,
-        backgroundColor: 'rgba(44, 137, 30, 0.4)',
-        borderColor: 'rgba(44, 137, 30, 1)',
-        borderWidth: 1,
-      },
-      {
-        label: 'Consuming',
-        data: consumingData,
-        backgroundColor: 'rgba(255, 10, 10, 0.6)',
-        borderColor: 'rgba(255, 10, 10, 1)',
-        borderWidth: 1,
-      },
-      {
-        label: 'No change',
-        data: noChangeData,
-        backgroundColor: 'rgba(51, 49, 49, 0.6)',
-        borderColor: 'rgba(51, 49, 49, 1)',
+        label: 'Status',
+        data: dataArray,
+        backgroundColor: colorArray,
+        borderColor: colorArray,
         borderWidth: 1,
       },
     ],
+    
   };
   const options = {
      responsive: true, 
@@ -66,16 +47,14 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({ chargingData, consumi
           { 
             const dataset = tooltipItem.dataset;
             const index = tooltipItem.dataIndex;
+            
             if(dataset.data.length == 1)
             {
-              return `${dataset.data[0]}% : ${difference[index] > 0 
+              return `${dataset.data[0]}%  ${difference[index] > 0 
               ? `Increased by ${Math.abs(difference[index])}%`
               : difference[index] < 0 
                 ? `Decreased by ${Math.abs(difference[index])}%`
-                : 'No Change'}`;       }
-            if(index == 0 ) //first bar
-            {
-                return `${dataset.data[index]}% `; 
+                : ''}`;       
             }
             else{
               if(difference[index] != 0)  //consuming or changing bars
@@ -87,6 +66,45 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({ chargingData, consumi
               }
             }
           },
+        },
+      },
+      legend: {
+        display: true,
+        labels: {
+          generateLabels: (chart) => {
+            const colors = ['rgba(44, 137, 30, 0.4)', 'rgba(255, 10, 10, 0.6)', 'rgba(51, 49, 49, 0.6)'];
+            const types = ['Charging', 'Consuming', 'NoChange'];
+           
+            return types.map((type, i) => ({
+              text: type,
+              fillStyle: colors[i],
+              strokeStyle: colors[i],
+              datasetIndex: 0,
+              hidden: !legendVisibility[type],  // Toggle visibility state
+              fontColor: legendVisibility[type] ? '#000000' : 'red',  // Change color when hidden
+              textDecoration: legendVisibility[type] ? 'none' : 'line-through',  // Strike-through when hidden
+              
+            }));
+
+          },
+        },
+        onClick: (e, legendItem) => {
+          const chart = e.chart;
+          const type = legendItem.text;
+
+          // Toggle the visibility 
+          setLegendVisibility((prev) => ({
+            ...prev,
+            [type]: !prev[type],
+          }));
+
+          chart.getDatasetMeta(0).data.forEach((bar, i) => {
+            if (bar.options.backgroundColor === legendItem.strokeStyle) {
+              bar.hidden = legendVisibility[type];  // Invert the visibility logic
+            }
+          });
+
+          chart.update();
         },
       },
     },
