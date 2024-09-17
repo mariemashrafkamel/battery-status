@@ -53,6 +53,8 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({ chargingData, consumi
      responsive: true, 
      maintainAspectRatio: true,
      maxBarThickness:30,
+     categoryPercentage: 0.5,
+     barPercentage: 1.0,
      plugins: {
       title: {
         display: true,
