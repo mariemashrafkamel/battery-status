@@ -1,4 +1,4 @@
-
+ type LegendType = 'Charging' | 'Consuming' | 'NoChange'; //possible legend(label tags) types
  interface BatteryBarChartProps {
    labels: string[]; //dates to be displayed on x axis
    difference: number[];
@@ -24,5 +24,11 @@ interface EventData {
   difference: number;
   processedColors:string;
   processedData:number;
-  
+}
+
+// Interface for the legend(label tag) visibility state
+interface LegendVisibility {
+  Charging: boolean;
+  Consuming: boolean;
+  NoChange: boolean;
 }

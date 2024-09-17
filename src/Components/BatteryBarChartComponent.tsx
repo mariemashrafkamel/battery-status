@@ -15,8 +15,8 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 
 const ChartComponent : React.FC<BatteryBarChartProps> = ({labels, difference, dataArray, colorArray}) => {
-  const [legendVisibility, setLegendVisibility] = useState({ Charging: true, Consuming: true, NoChange: true });
- 
+  const [legendVisibility, setLegendVisibility] = useState<LegendVisibility>({ Charging: true, Consuming: true, NoChange: true });
+  
   const chartData = {
     labels,
     datasets: [
@@ -28,7 +28,7 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({labels, difference, da
         borderWidth: 1,
       },
     ],
-    
+   
   };
   const options = {
      responsive: true, 
@@ -73,8 +73,8 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({labels, difference, da
         labels: {
           generateLabels: (chart) => {
             const colors = ['rgba(44, 137, 30, 0.4)', 'rgba(255, 10, 10, 0.6)', 'rgba(51, 49, 49, 0.6)'];
-            const types = ['Charging', 'Consuming', 'NoChange'];
-           
+            const types: LegendType[] = ['Charging', 'Consuming', 'NoChange'];
+
             return types.map((type, i) => ({
               text: type,
               fillStyle: colors[i],
@@ -90,15 +90,15 @@ const ChartComponent : React.FC<BatteryBarChartProps> = ({labels, difference, da
         },
         onClick: (e, legendItem) => {
           const chart = e.chart;
-          const type = legendItem.text;
+          const type = legendItem.text as LegendType;
 
           // Toggle the visibility 
-          setLegendVisibility((prev) => ({
+          setLegendVisibility((prev: LegendVisibility) => ({
             ...prev,
             [type]: !prev[type],
           }));
 
-          chart.getDatasetMeta(0).data.forEach((bar, i) => {
+          chart.getDatasetMeta(0).data.forEach((bar) => {
             if (bar.options.backgroundColor === legendItem.strokeStyle) {
               bar.hidden = legendVisibility[type];  // Invert the visibility logic
             }
